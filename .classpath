@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="lesson_1/src/main/java"/>
+	<classpathentry kind="src" path="lesson_10/src/main/java"/>
+	<classpathentry kind="src" path="lesson_2/src/main/java"/>
+	<classpathentry kind="src" path="lesson_3/src/main/java"/>
+	<classpathentry kind="src" path="lesson_4/src/main/java"/>
+	<classpathentry kind="src" path="lesson_5/src/main/java"/>
+	<classpathentry kind="src" path="lesson_6/src/main/java"/>
+	<classpathentry kind="src" path="lesson_7/src/main/java"/>
+	<classpathentry kind="src" path="lesson_8/src/main/java"/>
+	<classpathentry kind="src" path="lesson_9/src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="lesson_1/src/main/out"/>
+</classpath>
