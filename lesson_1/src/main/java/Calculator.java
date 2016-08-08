@@ -10,7 +10,6 @@ public class Calculator{
 * Умножение
 * @param first первый аргумент
 * @param second второй аргумент
-* @param result записываем результат
 */
 	public   void add(double first, double second){
 		double mult=first*second; 
@@ -21,7 +20,6 @@ public class Calculator{
 * Вычитание
 * @param first первый аргумент
 * @param second второй аргумент
-* @param result записываем результат
 */
 	public void add1 (double first, double second){
 			double min=first-second;
@@ -32,7 +30,6 @@ public class Calculator{
 * Сложение
 * @param first первый аргумент
 * @param second второй аргумент
-* @param result записываем результат
 */
 	public void add2(double first, double second){
 			double plus=first+second;
@@ -43,7 +40,6 @@ public class Calculator{
 * Деление
 * @param first первый аргумент
 * @param second второй аргумент
-* @param result записываем результат
 */
 	public void add3(double first, double second){
 			double div=first/second;

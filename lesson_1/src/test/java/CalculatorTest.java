@@ -10,15 +10,10 @@ import static org.junit.Assert.*;
 * @version 1
 */
 public class CalculatorTest{
-    /**
-     *  @param calc новый объект класса Calculator
-     */
+   
     Calculator calc=new Calculator();
 /**
 * Умножение
-* @param calc новый объект класса Calculator
-* @param add прописываем входные параметры в новом объекте класса
-* @param Assert проверяем  правильно ли работает наш метод add
 */
     @Test
     public void WhenMultiplyShouldMyltiply(){
@@ -27,9 +22,7 @@ public class CalculatorTest{
     }
 	/**
 * Вычитание
-* @param calc новый объект класса Calculator
-* @param add прописываем входные параметры в новом объекте класса
-* @param Assert проверяем  правильно ли работает наш метод add1
+
 */
     @Test
     public void WhenMinusShouldMinus(){
@@ -38,9 +31,7 @@ public class CalculatorTest{
     }
 		/**
 * Сложение
-* @param calc новый объект класса Calculator
-* @param add прописываем входные параметры в новом объекте класса
-* @param Assert проверяем  правильно ли работает наш метод add2
+
 */
     @Test
     public void WhenPlusShouldPlus(){
@@ -48,9 +39,7 @@ public class CalculatorTest{
         Assert.assertThat(calc.result, is(12.0));
     }
 	/** Деление
-* @param calc новый объект класса Calculator
-* @param add прописываем входные параметры в новом объекте класса
-* @param Assert проверяем  правильно ли работает наш метод add3
+
 */
     @Test
     public void WhenDivideShouldDivide(){
