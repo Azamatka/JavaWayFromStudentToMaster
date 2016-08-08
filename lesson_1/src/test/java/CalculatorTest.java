@@ -16,7 +16,7 @@ public class CalculatorTest{
 * Умножение
 */
     @Test
-    public void WhenMultiplyShouldMyltiply(){
+    public void whenMultiplyShouldMyltiply(){
         calc.add(8,4);
         Assert.assertThat(calc.result, is(32.0));
     }
@@ -25,7 +25,7 @@ public class CalculatorTest{
 
 */
     @Test
-    public void WhenMinusShouldMinus(){
+    public void whenMinusShouldMinus(){
         calc.add1(8,4);
         Assert.assertThat(calc.result, is(4.0));
     }
@@ -34,7 +34,7 @@ public class CalculatorTest{
 
 */
     @Test
-    public void WhenPlusShouldPlus(){
+    public void whenPlusShouldPlus(){
         calc.add2(8,4);
         Assert.assertThat(calc.result, is(12.0));
     }
@@ -42,7 +42,7 @@ public class CalculatorTest{
 
 */
     @Test
-    public void WhenDivideShouldDivide(){
+    public void whenDivideShouldDivide(){
         calc.add3(8,4);
         Assert.assertThat(calc.result, is(2.0));
     }
