@@ -1,0 +1,2 @@
+Был создан 1 объект класса Claim,вот этот claim, Claim claim = new Claim();
+В консоль будет выведено task, инициализация происходит здесь processClaim(claim); 
