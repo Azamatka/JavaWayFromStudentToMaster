@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import zadanie3.Point;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;

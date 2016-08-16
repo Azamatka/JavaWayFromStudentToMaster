@@ -1,3 +1,4 @@
+package zadanie3;
 /**
  * Triangle  класс для расчета площади треугольника
  * @author Azamat

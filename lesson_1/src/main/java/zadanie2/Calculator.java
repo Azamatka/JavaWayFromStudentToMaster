@@ -1,11 +1,12 @@
+package zadanie2;
 /**
 * Calculator класс для вычисления арифмитеческих операций: + - *  и /
 * @author Azamat
-* @since 6.08.2016
+ * @since 6.08.2016
 * @version 1
 */
 public class Calculator{
-	  double result;
+	public   double result;
 /**
 * Умножение
 * @param first первый аргумент

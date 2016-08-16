@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import zadanie2.Calculator;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;

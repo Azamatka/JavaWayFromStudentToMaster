@@ -1,4 +1,6 @@
 import org.junit.Test;
+import zadanie3.Point;
+import zadanie3.Triangle;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
