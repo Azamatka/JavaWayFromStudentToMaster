@@ -5,11 +5,11 @@ package zadanie3;
  * @since 14.08.2016
  * @version 1
  */
-
 public class Triangle {
 public Point a;
 public Point b;
 public Point c;
+
 	/**
 	 * Метод конструктор для инициализации точек-вершин треугольника
 	 * @param a первый аргумент
