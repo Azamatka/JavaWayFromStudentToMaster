@@ -10,7 +10,7 @@ public class Factorial {
      * Метод для вычисления факториала
      * @param x  переменная факториала, через которую будет задаваться значение
      */
-    public static double fact(int x) {
+    public  double fact(int x) {
         double d = 1;
         for (int i = 1; i <= x; i++) {
             d = i * d;

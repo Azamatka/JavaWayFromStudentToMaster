@@ -11,7 +11,8 @@ import static org.hamcrest.core.Is.is;
 public class FactorialTest {
     @Test
     public void factorialMustCalculate() {
-       double y= Factorial.fact(6);
+        Factorial factor=new Factorial();
+       double y= factor.fact(6);
         double x=720;
         Assert.assertThat(y,is(x));
     }

@@ -29,9 +29,8 @@ public class Square {
     public void show(float start, float finish,float  step){
         Square sq=new Square(a,b,c);
         for(float x=start; start<finish; start=start+step){
-            System.out.println(sq.calculate(start));
-
-
+          System.out.println(sq.calculate(start));
         }
+
     }
 }
