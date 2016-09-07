@@ -9,23 +9,27 @@ import java.util.Arrays;
 public class Dublicate {
     /**
      * delDublicate метод для  удаления дубликатов из массива
+     *
      * @param args массив переменная, через которую будет задаваться значение
      */
     public String[] delDublicate(String[] args) {
-        for (int i = args.length - 1; i > 0; i--) {
-            StringBuffer result = new StringBuffer();
-            result.append(args[i]);
-            String res = result.toString();
-            for (int j = 0; j < args.length; j++) {
-                StringBuffer esult = new StringBuffer();
-                esult.append(args[j]);
-                String re = esult.toString();
-                if (res.equals(re)) {
-                    if (j != i) {
-                        args[i] = " ";
+        for (int i = 0; i < args.length; i++) {
+            if (args[i] != null) {
+                for (int j = i + 1; j < args.length; j++) {
+                    if (args[j] != null) {
+                        if (args[j].equals(args[i])) {
+                            for (int j1 = j; j1 < args.length - 1; j1++) {
+                                args[j1] = args[j1 + 1];
+                            }
+                            args[args.length - 1] = null;
+                        }
+
                     }
+
                 }
+
             }
+
         }
         return args;
     }

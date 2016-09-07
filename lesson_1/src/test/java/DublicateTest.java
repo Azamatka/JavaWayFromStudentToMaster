@@ -10,11 +10,11 @@ import static org.hamcrest.core.Is.is;
  */
 public class DublicateTest {
 @Test
-    public void dublicateMustBeDeleted(){
+    public void dublicatesMustBeDeleted(){
         Dublicate dub=new Dublicate();
-        String [] res={"Привет", "Привет","Петр", "задание", "Петр","выполнено", "верно", "задание"};
+        String [] res={"Hello", "Hello","exercises", "done", "correctly","exercises", "?", "done"};
         dub.delDublicate(res);
-    String [] res1={"Привет"," ","Петр","задание"," ","выполнено","верно"," "};
+    String [] res1={"Hello", "exercises", "done", "correctly", "?", null, null, null};
     Assert.assertThat(res1,is(res));
     }
 }

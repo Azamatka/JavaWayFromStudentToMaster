@@ -1,15 +1,15 @@
 package zadanie5;
 /**
- * Puzir  класс для  сортировки массива методом пузыря
+ * Bubble  класс для  сортировки массива методом пузыря
  * @since 06.09.2016
  * @version 1
  */
-public class Puzir {
+public class Bubble {
     /**
-     * puzirSort метод для  сортировки массива методом пузыря
+     * bubbleSort метод для  сортировки массива методом пузыря
      * @param values массив переменная, через которую будут задаваться значения
      */
-    public int [] puzirSort(int [] values){
+    public int [] bubbleSort(int [] values){
         for(int a=values.length-1;a>0;a--){
             for(int b=0;b<a;b++){
                 if(values[b]>values[b+1]){
