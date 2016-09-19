@@ -14,19 +14,21 @@ public class Task {
         char[] orig = origin.toCharArray();
         char[] su = sub.toCharArray();
         int count=1;
+        boolean result=false;
         for (int i = 0; i <=orig.length-su.length; i++) {
             if (su[0]==orig[i]){
             for (int k = 1; k < su.length; k++) {
                 if (su[k]==orig[k+i]) {
                     count++;
                          if(count==su.length){
-                          return true;
+                             result=true;
                          }
-                    }
-                }
-                    }
-                }
-            return false;
 
+                    }
+                }
+                    }
+                }
+
+        return result;
     }
 }
