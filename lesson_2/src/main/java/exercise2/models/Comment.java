@@ -1,11 +1,11 @@
-package exercise2;
+package exercise2.models;
 /**
  * Comment класс для создания комментариев к заявке
  * @since 24.11.2016
  * @version 1
  */
 public class Comment {
-    String comment;
+   public  String comment;
     /**
      * Метод Comment конструктор для возвращения и использования комментария
      * @param comment переменная комментария
@@ -14,4 +14,9 @@ public class Comment {
 
         this.comment=comment;
     }
+
+    public String getComm(){
+        return this.comment;
+    }
+
 }

@@ -1,4 +1,5 @@
 package exercise2;
+import exercise2.models.Comment;
 import exercise2.models.Item;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,52 +17,56 @@ public class TrackerTest extends OutTest {
 
     public void trackerMustAddItem() {
         Tracker track = new Tracker();
-        track.addItem(new Item("Matt", "is doctor", 21, 1));
-        track.addItem(new Item("John", "is driver", 45, 2));
-        track.addItem(new Item("Jeff", "is  programmer", 53, 3));
-        track.addItem(new Item("George", "is president", 88, 4));
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
         Assert.assertThat(track.items[1].getName(), is("John"));
     }
 
     @Test
     public void trackerMustFindById() {
         Tracker track = new Tracker();
-        track.addItem(new Item("Matt", "is doctor", 21, 1));
-        track.addItem(new Item("John", "is driver", 45, 2));
-        track.addItem(new Item("Jeff", "is  programmer", 53, 3));
-        track.addItem(new Item("George", "is president", 88, 4));
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
         Assert.assertThat(track.findById(4).getName(), is("George"));
     }
 
     @Test
     public void trackerMustFindByName() {
         Tracker track = new Tracker();
-        track.addItem(new Item("Matt", "is doctor", 21, 1));
-        track.addItem(new Item("John", "is driver", 45, 2));
-        track.addItem(new Item("Jeff", "is  programmer", 53, 3));
-        track.addItem(new Item("George", "is president", 88, 4));
-        Assert.assertThat(track.findByName("Jeff").getDesc(), is("is  programmer"));
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
+        Assert.assertTrue(track.findByName("Matt"));
     }
 
     @Test
     public void trackerMustEditApp() {
         Tracker track = new Tracker();
-        track.addItem(new Item("Matt", "is doctor", 21, 1));
-        track.addItem(new Item("John", "is driver", 45, 2));
-        track.addItem(new Item("Jeff", "is  programmer", 53, 3));
-        track.addItem(new Item("George", "is president", 88, 4));
-        track.editApp(2, (new Item("Petr", "is programmer", 04, 9)));
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
         Assert.assertThat(track.items[2].getName(), is("Petr"));
     }
 
     @Test
-    public void trackerMustShowAllApp() {
+    public void trackerMustGetAll() {
         Tracker track = new Tracker();
-        track.addItem(new Item("Matt", "is doctor", 21, 1));
-        track.addItem(new Item("John", "is driver", 45, 2));
-        track.addItem(new Item("Jeff", "is  programmer", 53, 3));
-        track.addItem(new Item("George", "is president", 88, 4));
-        for (Item item : track.showAllApp()) {
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
+        for (Item item : track.getAll()) {
             System.out.println(item.getName());
         }
         Assert.assertThat("Matt\r\nJohn\r\nJeff\r\nGeorge\r\n", is(output.toString()));
@@ -71,11 +76,31 @@ public class TrackerTest extends OutTest {
     @Test
     public void trackerMustDeleteApp() {
         Tracker track = new Tracker();
-        track.addItem(new Item("Matt", "is doctor", 21, 1));
-        track.addItem(new Item("John", "is driver", 45, 2));
-        track.addItem(new Item("Jeff", "is  programmer", 53, 3));
-        track.addItem(new Item("George", "is president", 88, 4));
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
         track.delApp(0);
         Assert.assertNull(track.items[0].getName());
     }
+
+    @Test
+    public void testComments() {
+        Tracker track = new Tracker();
+        Comment[] com = new Comment[100];
+        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("John", "is driver", 45, 2, com));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
+        track.addApp(new Item("George", "is president", 88, 4, com));
+        track.addComm(1, new Comment("новый комментарий"));
+        for (Comment comments : track.getAllComm()) {
+            if (comments != null) {
+                Assert.assertThat(comments.getComm(), is("новый комментарий"));
+            }
+        }
+    }
 }
+
+
+
