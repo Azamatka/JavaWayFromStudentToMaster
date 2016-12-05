@@ -8,24 +8,21 @@ import exercise2.models.Item;
  * @since 24.11.2016
  * @version 1
  */
-public class Tracker {
+public class Tracker extends Item {
     public Item[] items = new Item[100];
-    Item item=new Item();
-    public Comment[] com = new Comment[100];
     private static final Random rn = new Random(100);
     int number = 0;
-    int num = 0;
+
 
     /**
      * Метод addApp для добавления новой заявки в трекер
      */
     public Item addApp(Item item) {
         item.setId(this.generateId());
-       //item.setComm(this.addComm(item.com));
         for (int i = 0; i <= items.length; i++) {
             if (items[i] == null) {
-                number++;
                 items[i] = item;
+                number++;
                 break;
             }
         }
@@ -38,7 +35,7 @@ public class Tracker {
     public Item findById(int id) {
         Item result = null;
         for (Item item : items) {
-            if (item != null && item.getId() == id) {
+            if (item.getId() == id) {
                 result = item;
                 break;
             }
@@ -75,19 +72,18 @@ public class Tracker {
 
     /**
      * Метод editApp  для редактирования заявки
-     *
-     * @param arraysCellNumber переменная номер заявки в массиве
+     * edittedApp редактируемая заявка
+     * @param id заявки
      */
-    public Item[] editApp(int arraysCellNumber, Item edittedApp) {
-        Item[] result = new Item[number];
-        for (int i = 0; i != number; i++) {
-            if (i == arraysCellNumber) {
-                this.items[i] = edittedApp;
+    public Item   editApp(int id, Item edittedApp) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i].getId()==id) {
+               items[i] = edittedApp;
+                 break;
             }
         }
-        return result;
+        return edittedApp;
     }
-
     /**
      * Метод generateId  для генерации случайных чисел для присвоения уникального айди заявке
      */
@@ -97,12 +93,14 @@ public class Tracker {
     }
 
     /**
-     * Метод showAllApp  для выведения всех заявок
+     * Метод getAll  для выведения всех заявок
      */
     public Item[] getAll() {
         Item[] result = new Item[number];
-        for (int i = 0; i < number; i++) {
-            result[i] = this.items[i];
+        for (int i = 0; i <=number; i++) {
+            if (items[i] != null) {
+                result[i] = items[i];
+            }
         }
         return result;
 
@@ -110,19 +108,20 @@ public class Tracker {
 
     /**
      * Метод delApp  для удаления  заявки
-     * @param arraysCellNumber переменная номер заявки в массиве
+     * @param id заявки
      */
-    public Item[] delApp(int arraysCellNumber) {
-        Item[] result = new Item[number];
+    public Item delApp(int id) {
         Item emptyItem = new Item();
-        for (int i = 0; i != number; i++) {
-            if (i == arraysCellNumber) {
-                this.items[i] = emptyItem;
+        for (int i = 0; i <number; i++) {
+           if (items[i].getId()==id) {
+                 items[i] = emptyItem;
+                break;
 
             }
-        }
-        return result;
+       }
+        return emptyItem;
     }
+
     /**
      * Метод addComm  метод для добавления комментария к заявке по  id
      * @param id айди заявки
@@ -130,11 +129,10 @@ public class Tracker {
      */
 
      public Item addComm(int id,Comment comment) {
+         Item item=findById(id);
          for (int i = 0; i < com.length; i++) {
-             if (com[i] == null) {
-                 num++;
-                 this.com[i] = comment;
-                  item = this.findById(id);
+             if (item == null) {
+                 com[i] = comment;
                  item.setComm(comment);
                 break;
              }
@@ -146,12 +144,16 @@ public class Tracker {
      */
 
     public Comment[] getAllComm(){
-        Comment[] result = new Comment[num];
-        for(int i=0;i<=num;i++){
-            result[i]=this.com[i];
+        Comment[] result = new Comment[com.length];
+        for(int i=0;i<com.length;i++) {
+            if (com[i] != null) {
+                result[i] = com[i];
+            }
         }
+
         return result;
     }
 }
+
 
 

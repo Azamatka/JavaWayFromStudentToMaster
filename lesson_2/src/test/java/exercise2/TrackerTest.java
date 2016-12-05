@@ -55,7 +55,8 @@ public class TrackerTest extends OutTest {
         track.addApp(new Item("John", "is driver", 45, 2, com));
         track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
         track.addApp(new Item("George", "is president", 88, 4, com));
-        Assert.assertThat(track.items[2].getName(), is("Petr"));
+        track.editApp(1, new Item("Petr", "is  programmer", 22, 10, com));
+        Assert.assertThat(track.findById(10).getName(), is("Petr"));
     }
 
     @Test
@@ -67,11 +68,12 @@ public class TrackerTest extends OutTest {
         track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
         track.addApp(new Item("George", "is president", 88, 4, com));
         for (Item item : track.getAll()) {
-            System.out.println(item.getName());
+            System.out.print(item.getName());
         }
-        Assert.assertThat("Matt\r\nJohn\r\nJeff\r\nGeorge\r\n", is(output.toString()));
+        Assert.assertThat("MattJohnJeffGeorge", is(output.toString()));
 
     }
+
 
     @Test
     public void trackerMustDeleteApp() {
@@ -81,8 +83,7 @@ public class TrackerTest extends OutTest {
         track.addApp(new Item("John", "is driver", 45, 2, com));
         track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
         track.addApp(new Item("George", "is president", 88, 4, com));
-        track.delApp(0);
-        Assert.assertNull(track.items[0].getName());
+        Assert.assertNull(track.delApp(1).getName());
     }
 
     @Test
@@ -96,11 +97,12 @@ public class TrackerTest extends OutTest {
         track.addComm(1, new Comment("новый комментарий"));
         for (Comment comments : track.getAllComm()) {
             if (comments != null) {
-                Assert.assertThat(comments.getComm(), is("новый комментарий"));
+                Assert.assertThat(comments.getComm(), is("новый комdментарий"));
             }
         }
     }
 }
+
 
 
 
