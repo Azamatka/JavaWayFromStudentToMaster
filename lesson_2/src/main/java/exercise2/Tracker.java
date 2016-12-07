@@ -129,28 +129,17 @@ public class Tracker extends Item {
      */
 
      public Item addComm(int id,Comment comment) {
-         Item item=findById(id);
-         for (int i = 0; i < com.length; i++) {
-             if (item == null) {
-                 com[i] = comment;
-                 item.setComm(comment);
-                break;
-             }
-         }
+         Item item = findById(id);
+         item.addComm(comment);
          return item;
      }
     /**
      * Метод getAllComm  метод для вывода всех комментариев
+     * @param id айди заявки
      */
 
-    public Comment[] getAllComm(){
-        Comment[] result = new Comment[com.length];
-        for(int i=0;i<com.length;i++) {
-            if (com[i] != null) {
-                result[i] = com[i];
-            }
-        }
-
+    public Comment[] getAllComm(int id){
+        Comment[] result = findById(id).getComm();
         return result;
     }
 }
