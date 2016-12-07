@@ -1,11 +1,11 @@
 package exercise2.models;
 
-public class Item {
+public class Item extends Comment {
     public String name;
     public String description;
     public long date;
     public long id;
-    public Comment[] com = new Comment[100];
+    public Comment[] com;
 
     public Item() {
 
@@ -25,6 +25,8 @@ public class Item {
         return this.name;
     }
 
+    public Comment[] getComm() { return this.com;}
+
     public String getDesc() {
         return this.description;
     }
@@ -33,12 +35,23 @@ public class Item {
         return this.date;
     }
 
+
+    public Comment  addComm(Comment comment){
+        for (int i = 0; i < com.length; i++) {
+            if (this.com[i] == null) {
+                this.com[i] = comment;
+                break;
+            }
+        }
+        return comment;
+    }
+
+
+
     public long getId() {
         return this.id;
     }
-    public  void setComm(Comment comment) {
 
-    }
     public void setId(long id) {
     }
 

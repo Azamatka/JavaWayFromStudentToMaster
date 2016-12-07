@@ -89,16 +89,17 @@ public class TrackerTest extends OutTest {
     @Test
     public void testComments() {
         Tracker track = new Tracker();
-        Comment[] com = new Comment[100];
-        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
-        track.addApp(new Item("John", "is driver", 45, 2, com));
-        track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
-        track.addApp(new Item("George", "is president", 88, 4, com));
+        track.addApp(new Item("Matt", "is doctor", 21, 1, new Comment[10]));
+        track.addApp(new Item("John", "is driver", 45, 2,new Comment[10]));
+        track.addApp(new Item("Jeff", "is  programmer", 53, 3, new Comment[10]));
+        track.addApp(new Item("George", "is president", 88, 4, new Comment[10]));
         track.addComm(1, new Comment("новый комментарий"));
-        for (Comment comments : track.getAllComm()) {
-            if (comments != null) {
-                Assert.assertThat(comments.getComm(), is("новый комdментарий"));
+        for (Comment comment : track.getAllComm(1)) {
+            if (comment!=null) {
+                Assert.assertThat(comment.getComment(), is("новый комментарий"));
+
             }
+
         }
     }
 }

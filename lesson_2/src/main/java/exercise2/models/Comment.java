@@ -6,16 +6,18 @@ package exercise2.models;
  */
 public class Comment {
    public  String comment;
+    public Comment(){}
     /**
      * Метод Comment конструктор для возвращения и использования комментария
      * @param comment переменная комментария
      */
+
     public Comment(String comment){
 
         this.comment=comment;
     }
 
-    public String getComm(){
+    public String getComment(){
         return this.comment;
     }
 
