@@ -28,7 +28,7 @@ public class StartUI {
     }
 
     public void menu() {
-        System.out.println("Choose menu's paragraph:" + "\n" +
+        askAction=input.askint("Choose menu's paragraph:" + "\n" +
                 "1.Create application" + "\n" +
                 "2.Find by id" + "\n" +
                 "3.Find by name" + "\n" +
@@ -38,8 +38,6 @@ public class StartUI {
                 "7.Add comment" + "\n" +
                 "8.Get all comments" + "\n" +
                 "9.Exit");
-        Scanner scimmer = new Scanner(System.in);
-        askAction = scimmer.nextInt();
         if (askAction == 1) {
             String askName = input.ask("Enter name:");
             String askDesc = input.ask("Enter description:");
@@ -56,9 +54,7 @@ public class StartUI {
 
         }
         if (askAction == 3) {
-            System.out.println("Enter name: ");
-            Scanner sc = new Scanner(System.in);
-            String askNameFind = sc.nextLine();
+            String askNameFind = input.ask("Enter name: ");
             Item item = tracker.findByName(askNameFind);
             System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
             this.menu();
@@ -88,9 +84,7 @@ public class StartUI {
             }
             if (askAction == 7) {
                 long askComm = input.asklong("Enter aplications's id, which you want to add comment");
-                System.out.println("Enter comment: ");
-                Scanner scann = new Scanner(System.in);
-                String newComm = scann.nextLine();
+                String newComm=input.ask("Enter comment: ");
                 tracker.addComm(askComm, new Comment(newComm));
                 this.menu();
             }
@@ -106,7 +100,7 @@ public class StartUI {
             if (askAction == 9) {
                 System.exit(0);
             }
- 
+
         }
     }
 

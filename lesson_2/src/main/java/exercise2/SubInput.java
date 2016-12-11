@@ -13,4 +13,9 @@ public class SubInput implements Input{
     public long asklong(String question) {
         return 0;
     }
+
+    @Override
+    public int askint(String question) {
+        return 0;
+    }
 }
