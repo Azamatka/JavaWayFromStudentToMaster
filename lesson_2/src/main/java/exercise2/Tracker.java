@@ -10,7 +10,7 @@ import exercise2.models.Item;
  */
 public class Tracker extends Item {
     public Item[] items = new Item[100];
-    private static final Random rn = new Random(100);
+    private static final Random rn = new Random();
     int number = 0;
 
 
@@ -19,6 +19,7 @@ public class Tracker extends Item {
      */
     public Item addApp(Item item) {
         item.setId(this.generateId());
+        item.setTime(this.dateTimer());
         for (int i = 0; i <= items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
@@ -32,12 +33,11 @@ public class Tracker extends Item {
     /**
      * Метод findById  для нахождения заявки по айди
      */
-    public Item findById(int id) {
+    public Item findById(long id) {
         Item result = null;
         for (Item item : items) {
             if (item.getId() == id) {
-                result = item;
-                break;
+                return item;
             }
         }
         return result;
@@ -46,20 +46,20 @@ public class Tracker extends Item {
     /**
      * Метод findByName  для нахождения заявки по имени пользователя
      */
-    public boolean findByName(String name) {
-        boolean result = false;
+    public Item findByName(String name) {
+       Item result = new Item();
         char[] subname = name.toCharArray();
         int count = 1;
         for (Item item : items) {
             if (item != null) {
-                char[] names = items[0].getName().toCharArray();
+                char[] names = item.getName().toCharArray();
                 for (int i = 0; i <= names.length - subname.length; i++) {
                     if (subname[0] == names[i]) {
                         for (int k = 1; k < subname.length; k++) {
                             if (subname[k] == names[k + i]) {
                                 count++;
                                 if (count == subname.length) {
-                                    result = true;
+                                    return item;
                                 }
                             }
                         }
@@ -70,12 +70,13 @@ public class Tracker extends Item {
         return result;
     }
 
+
     /**
      * Метод editApp  для редактирования заявки
-     * edittedApp редактируемая заявка
+     * edittedApp отредактированная заявка
      * @param id заявки
      */
-    public Item   editApp(int id, Item edittedApp) {
+    public Item   editApp(long id, Item edittedApp) {
         for (int i = 0; i < items.length; i++) {
             if (items[i].getId()==id) {
                items[i] = edittedApp;
@@ -87,10 +88,7 @@ public class Tracker extends Item {
     /**
      * Метод generateId  для генерации случайных чисел для присвоения уникального айди заявке
      */
-    long generateId() {
 
-        return rn.nextLong() + System.currentTimeMillis();
-    }
 
     /**
      * Метод getAll  для выведения всех заявок
@@ -110,16 +108,15 @@ public class Tracker extends Item {
      * Метод delApp  для удаления  заявки
      * @param id заявки
      */
-    public Item delApp(int id) {
-        Item emptyItem = new Item();
+    public Item delApp(long id) {
         for (int i = 0; i <number; i++) {
            if (items[i].getId()==id) {
-                 items[i] = emptyItem;
+                 items[i] = null;
                 break;
 
             }
        }
-        return emptyItem;
+        return null;
     }
 
     /**
@@ -128,20 +125,18 @@ public class Tracker extends Item {
      * @param comment комментарий
      */
 
-     public Item addComm(int id,Comment comment) {
+     public Item addComm(long id,Comment comment) {
          Item item = findById(id);
          item.addComm(comment);
          return item;
      }
-    /**
-     * Метод getAllComm  метод для вывода всех комментариев
-     * @param id айди заявки
-     */
-
-    public Comment[] getAllComm(int id){
-        Comment[] result = findById(id).getComm();
-        return result;
+    public long generateId(){
+        return System.currentTimeMillis()+rn.nextInt(100);
     }
+    public long dateTimer(){
+        return System.currentTimeMillis();
+    }
+
 }
 
 

@@ -40,11 +40,11 @@ public class TrackerTest extends OutTest {
     public void trackerMustFindByName() {
         Tracker track = new Tracker();
         Comment[] com = new Comment[100];
-        track.addApp(new Item("Matt", "is doctor", 21, 1, com));
+        track.addApp(new Item("ddffMattghh", "is doctor", 21, 1, com));
         track.addApp(new Item("John", "is driver", 45, 2, com));
         track.addApp(new Item("Jeff", "is  programmer", 53, 3, com));
         track.addApp(new Item("George", "is president", 88, 4, com));
-        Assert.assertTrue(track.findByName("Matt"));
+        Assert.assertThat(track.findByName("Matt"),is(track.items[0]));
     }
 
     @Test
@@ -86,23 +86,8 @@ public class TrackerTest extends OutTest {
         Assert.assertNull(track.delApp(1).getName());
     }
 
-    @Test
-    public void testComments() {
-        Tracker track = new Tracker();
-        track.addApp(new Item("Matt", "is doctor", 21, 1, new Comment[10]));
-        track.addApp(new Item("John", "is driver", 45, 2,new Comment[10]));
-        track.addApp(new Item("Jeff", "is  programmer", 53, 3, new Comment[10]));
-        track.addApp(new Item("George", "is president", 88, 4, new Comment[10]));
-        track.addComm(1, new Comment("новый комментарий"));
-        for (Comment comment : track.getAllComm(1)) {
-            if (comment!=null) {
-                Assert.assertThat(comment.getComment(), is("новый комментарий"));
 
             }
-
-        }
-    }
-}
 
 
 

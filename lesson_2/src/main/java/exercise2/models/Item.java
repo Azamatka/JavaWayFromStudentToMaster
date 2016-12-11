@@ -1,20 +1,25 @@
 package exercise2.models;
 
+import java.util.Date;
+import java.util.Random;
+
 public class Item extends Comment {
     public String name;
     public String description;
-    public long date;
-    public long id;
-    public Comment[] com;
+    long dateTime;
+    public Comment[] com=new Comment[100];
+    long id;
+
+
 
     public Item() {
 
     }
 
-    public Item(String name, String description, long date, int id, Comment[]  com) {
+    public Item(String name, String description,long dateTime, long id, Comment[]  com) {
         this.name = name;
         this.description = description;
-        this.date = date;
+        this.dateTime = dateTime;
         this.id = id;
         this.com = com;
 
@@ -32,8 +37,10 @@ public class Item extends Comment {
     }
 
     public long getDate() {
-        return this.date;
+        return this.dateTime;
     }
+    public void setId(long id){this.id=id;}
+    public void setTime(long time){this.dateTime=time;}
 
 
     public Comment  addComm(Comment comment){
@@ -46,14 +53,15 @@ public class Item extends Comment {
         return comment;
     }
 
-
-
+    public Comment[] getAllComm() {
+        Comment[] result = getComm();
+        return result;
+    }
     public long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
-    }
+
 
 }
 
