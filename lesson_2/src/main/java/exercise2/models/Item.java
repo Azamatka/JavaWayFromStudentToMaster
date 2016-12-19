@@ -1,5 +1,6 @@
 package exercise2.models;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 
@@ -63,5 +64,37 @@ public class Item extends Comment {
 
 
 
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        if (dateTime != item.dateTime) return false;
+        if (id != item.id) return false;
+        if (name != null ? !name.equals(item.name) : item.name != null) return false;
+        if (description != null ? !description.equals(item.description) : item.description != null) return false;
+        return Arrays.equals(com, item.com);
+
+    }
+
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (int) (dateTime ^ (dateTime >>> 32));
+        result = 31 * result + Arrays.hashCode(com);
+        result = 31 * result + (int) (id ^ (id >>> 32));
+        return result;
+    }
+
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", dateTime=" + dateTime +
+                ", com=" + Arrays.toString(com) +
+                ", id=" + id +
+                '}';
+    }
 }
 

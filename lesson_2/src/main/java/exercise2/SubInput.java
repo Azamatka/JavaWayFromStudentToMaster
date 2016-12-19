@@ -2,20 +2,24 @@ package exercise2;
 public class SubInput implements Input{
     private String[]answers;
     private int position=0;
+    long asl;
+    int asi;
     public SubInput(String[] answers){
         this.answers=answers;
     }
     public String ask(String question){
+        System.out.println(question);
+        System.out.println(answers[position]);
         return answers[position++];
     }
 
-    @Override
     public long asklong(String question) {
-        return 0;
+        System.out.println(question);
+        return 1 ;
     }
 
-    @Override
     public int askint(String question) {
-        return 0;
+        System.out.println(question);
+        return 1;
     }
 }

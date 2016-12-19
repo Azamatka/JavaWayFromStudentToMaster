@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class StartUI {
 
-    public int askAction;
+    public String askAction;
     Tracker tracker = new Tracker();
     Input input = new ConsoleInput();
 
@@ -22,13 +22,25 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
-        StartUI start = new StartUI(input);
+        StartUI start = new StartUI(new ConsoleInput());
         start.menu();
     }
+    /**
+     * Метод addComm  метод для добавления комментария к заявке по  id
+     * @param id айди заявки
+     * @param comment комментарий
+     */
 
+    public Item addComm(long id,Comment comment) {
+        Item item = tracker.findById(id);
+        item.addComm(comment);
+        return item;
+    }
+    /**
+     * Метод menu метод для выбора и реализации пункта меню
+     */
     public void menu() {
-        askAction=input.askint("Choose menu's paragraph:" + "\n" +
+        askAction = input.ask("Choose menu's paragraph:" + "\n" +
                 "1.Create application" + "\n" +
                 "2.Find by id" + "\n" +
                 "3.Find by name" + "\n" +
@@ -38,7 +50,8 @@ public class StartUI {
                 "7.Add comment" + "\n" +
                 "8.Get all comments" + "\n" +
                 "9.Exit");
-        if (askAction == 1) {
+        int askActionInt = Integer.parseInt(askAction);
+        if (askActionInt == 1) {
             String askName = input.ask("Enter name:");
             String askDesc = input.ask("Enter description:");
             long dateTime = tracker.getDate();
@@ -46,63 +59,71 @@ public class StartUI {
             tracker.addApp(new Item(askName, askDesc, dateTime, id, tracker.com));
             this.menu();
         }
-        if (askAction == 2) {
-            long askId = input.asklong("Enter id:");
-            Item item = tracker.findById(askId);
+        if (askActionInt == 2) {
+            String askId = input.ask("Enter id:");
+            long askIdLong = Long.parseLong(askId);
+            Item item = tracker.findById(askIdLong);
             System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
             this.menu();
 
         }
-        if (askAction == 3) {
+        if (askActionInt == 3) {
             String askNameFind = input.ask("Enter name: ");
             Item item = tracker.findByName(askNameFind);
             System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
             this.menu();
         }
-        if (askAction == 4) {
-            long idEdit = input.asklong("Enter application's id, which you want to edit:");
+        if (askActionInt == 4) {
+            String idEdit = input.ask("Enter application's id, which you want to edit:");
             String askNameEdit = input.ask("Enter new name:");
-            String askDescEdit =input.ask("Enter new description:");
-            long dateTimeEdit = tracker.findById(idEdit).getDate();
-            tracker.editApp(idEdit, new Item(askNameEdit, askDescEdit, dateTimeEdit, idEdit, tracker.com));
+            String askDescEdit = input.ask("Enter new description:");
+            long idEditLong = Long.parseLong(idEdit);
+            long dateTimeEdit = tracker.findById(idEditLong).getDate();
+            tracker.editApp(idEditLong, new Item(askNameEdit, askDescEdit, dateTimeEdit, idEditLong, tracker.com));
             System.out.println("Application is eddited to: ");
-            System.out.println(tracker.findById(idEdit).getName() + " " + tracker.findById(idEdit).getDesc() + " " + new Date(tracker.findById(idEdit).getDate()) + " " + tracker.findById(idEdit).getId());
+            System.out.println(tracker.findById(idEditLong).getName() + " " + tracker.findById(idEditLong).getDesc() + " " + new Date(tracker.findById(idEditLong).getDate()) + " " + tracker.findById(idEditLong).getId());
             this.menu();
         }
-        if (askAction == 5) {
+        if (askActionInt == 5) {
             for (Item item : tracker.getAll()) {
                 if (item != null) {
                     System.out.print(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId() + "\n");
 
                 }
             }
-            this.menu();}
-            if (askAction == 6) {
-                long delApp = input.asklong("Enter application's id, which you want to delete:");
-                tracker.delApp(delApp);
-                this.menu();
-            }
-            if (askAction == 7) {
-                long askComm = input.asklong("Enter aplications's id, which you want to add comment");
-                String newComm=input.ask("Enter comment: ");
-                tracker.addComm(askComm, new Comment(newComm));
-                this.menu();
-            }
-            if (askAction == 8) {
-                long askComment = input.asklong("Enter application's id which comments you want to see:");
-                for (Comment comments : tracker.findById(askComment).getAllComm()) {
-                    if (comments != null) {
-                        System.out.println(comments.getComment());
-                    }
+            this.menu();
+        }
+        if (askActionInt == 6) {
+            String delApp = input.ask("Enter application's id, which you want to delete:");
+            long delAppLong = Long.parseLong(delApp);
+            tracker.delApp(delAppLong);
+            this.menu();
+        }
+        if (askActionInt == 7) {
+            long askComm = input.asklong("Enter aplications's id, which you want to add comment");
+            String newComm = input.ask("Enter comment: ");
+            this.addComm(askComm, new Comment(newComm));
+            this.menu();
+        }
+        if (askActionInt == 8) {
+            String askComment = input.ask("Enter application's id which comments you want to see:");
+            long askCommentLong = Long.parseLong(askComment);
+            for (Comment comments : tracker.findById(askCommentLong).getAllComm()) {
+                if (comments != null) {
+                    System.out.println(comments.getComment());
                 }
-                this.menu();
             }
-            if (askAction == 9) {
-                System.exit(0);
-            }
-
+            this.menu();
+        }
+        if (askActionInt == 9) {
+            System.exit(0);
         }
     }
+
+    }
+
+
+
 
 
 

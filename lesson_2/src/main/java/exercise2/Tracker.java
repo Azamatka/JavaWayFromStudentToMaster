@@ -119,17 +119,7 @@ public class Tracker extends Item {
         return null;
     }
 
-    /**
-     * Метод addComm  метод для добавления комментария к заявке по  id
-     * @param id айди заявки
-     * @param comment комментарий
-     */
 
-     public Item addComm(long id,Comment comment) {
-         Item item = findById(id);
-         item.addComm(comment);
-         return item;
-     }
     public long generateId(){
         return System.currentTimeMillis()+rn.nextInt(100);
     }
