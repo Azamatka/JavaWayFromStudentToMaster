@@ -16,7 +16,7 @@ public class StartUI {
     public String askAction;
     Tracker tracker = new Tracker();
     Input input = new ConsoleInput();
-
+     long number=0;
     public StartUI(Input input) {
         this.input = input;
     }
@@ -54,9 +54,14 @@ public class StartUI {
         if (askActionInt == 1) {
             String askName = input.ask("Enter name:");
             String askDesc = input.ask("Enter description:");
-            long dateTime = tracker.getDate();
-            long id = tracker.getId();
-            tracker.addApp(new Item(askName, askDesc, dateTime, id, tracker.com));
+            String askId = input.ask("Do you want to enter your own id?:");
+            number++;
+            long asklong=0;
+            if(askId.equals("yes")){
+                asklong=number;
+            }else{asklong=tracker.generateId();}
+             long dateTime = tracker.dateTimer();
+            tracker.addApp(new Item(askName, askDesc, dateTime, asklong, tracker.com));
             this.menu();
         }
         if (askActionInt == 2) {
@@ -100,9 +105,10 @@ public class StartUI {
             this.menu();
         }
         if (askActionInt == 7) {
-            long askComm = input.asklong("Enter aplications's id, which you want to add comment");
+            String askComm = input.ask("Enter aplications's id, which you want to add comment");
             String newComm = input.ask("Enter comment: ");
-            this.addComm(askComm, new Comment(newComm));
+            long askCom = Long.parseLong(askComm);
+            this.addComm(askCom, new Comment(newComm));
             this.menu();
         }
         if (askActionInt == 8) {

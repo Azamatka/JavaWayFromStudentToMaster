@@ -17,7 +17,9 @@ import static org.junit.Assert.*;
  */
   public class StartUITest  {
     public static void main(String[] args) {
-        Input input= new SubInput(new String[]{"1", "George", "Smith","5", "9"});
+        Input input= new SubInput(new String[]{
+            "1", "George", "Smith","yes","1", "Matt", "Johns","yes","2","1","5","3","eorge","4","1",
+                "Azamat","Iltinbaev","5","6","2","5","7","1","Hello","8","1","9"});
         StartUI start = new StartUI(input);
         start.menu();
 

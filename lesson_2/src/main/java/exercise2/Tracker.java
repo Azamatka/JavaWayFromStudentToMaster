@@ -18,8 +18,8 @@ public class Tracker extends Item {
      * Метод addApp для добавления новой заявки в трекер
      */
     public Item addApp(Item item) {
-        item.setId(this.generateId());
-        item.setTime(this.dateTimer());
+       // item.setId(this.generateId());
+      item.setTime(this.dateTimer());
         for (int i = 0; i <= items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
@@ -118,7 +118,6 @@ public class Tracker extends Item {
        }
         return null;
     }
-
 
     public long generateId(){
         return System.currentTimeMillis()+rn.nextInt(100);
