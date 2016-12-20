@@ -3,7 +3,11 @@ package exercise2.models;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
-
+/**
+ * Item класс заявка
+ * @since 20.12.2016
+ * @version 1
+ */
 public class Item extends Comment {
     public String name;
     public String description;
@@ -16,7 +20,16 @@ public class Item extends Comment {
     public Item() {
 
     }
-
+    /**
+     * Item конструктор заявка
+     * @param  name имя заявки
+     *  @param  description описание заявки
+     *  @param  dateTime  дата создания заявки
+     *  @param  id цникальный id заявки
+     *  @param com массив комментариев для заявки
+     * @since 20.12.2016
+     * @version 1
+     */
     public Item(String name, String description,long dateTime, long id, Comment[]  com) {
         this.name = name;
         this.description = description;
@@ -42,7 +55,12 @@ public class Item extends Comment {
     }
     public void setId(long id){this.id=id;}
     public void setTime(long time){this.dateTime=time;}
-
+    /**
+     * Comment вспомогательный метод для добавления комментариев
+     * @param comment комментарий типа Comment
+     * @since 20.12.2016
+     * @version 1
+     */
 
     public Comment  addComm(Comment comment){
         for (int i = 0; i < com.length; i++) {
@@ -53,7 +71,11 @@ public class Item extends Comment {
         }
         return comment;
     }
-
+    /**
+     * getAllComm  метод для получения всех комментариев
+     * @since 20.12.2016
+     * @version 1
+     */
     public Comment[] getAllComm() {
         Comment[] result = getComm();
         return result;

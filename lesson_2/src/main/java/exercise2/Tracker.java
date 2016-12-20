@@ -1,7 +1,6 @@
 package exercise2;
 import java.util.*;
 
-import exercise2.models.Comment;
 import exercise2.models.Item;
 /**
  * Tracker класс  для методов и создания трекера
@@ -18,7 +17,6 @@ public class Tracker extends Item {
      * Метод addApp для добавления новой заявки в трекер
      */
     public Item addApp(Item item) {
-       // item.setId(this.generateId());
       item.setTime(this.dateTimer());
         for (int i = 0; i <= items.length; i++) {
             if (items[i] == null) {
@@ -85,9 +83,6 @@ public class Tracker extends Item {
         }
         return edittedApp;
     }
-    /**
-     * Метод generateId  для генерации случайных чисел для присвоения уникального айди заявке
-     */
 
 
     /**
@@ -118,10 +113,16 @@ public class Tracker extends Item {
        }
         return null;
     }
+    /**
+     * Метод generateId  для генерации случайных чисел для присвоения уникального айди заявке
+     */
 
     public long generateId(){
         return System.currentTimeMillis()+rn.nextInt(100);
     }
+    /**
+     * Метод dateTimer  для присвоения завке даты и времени создания
+     */
     public long dateTimer(){
         return System.currentTimeMillis();
     }

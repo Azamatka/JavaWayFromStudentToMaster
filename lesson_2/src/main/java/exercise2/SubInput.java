@@ -1,7 +1,9 @@
 package exercise2;
-
-import java.util.Arrays;
-
+/**
+ * SubInput класс наследующий интерфейс адаптированный под автоматический ввод через стринговый массив
+ * @since 20.12.2016
+ * @version 1
+ */
 public class SubInput implements Input{
     private String[]answers;
     private int position=0;
@@ -14,13 +16,5 @@ public class SubInput implements Input{
         return answers[position++];
     }
 
-    public long asklong(String question) {
-        System.out.println(question);
-        return 0 ;
     }
 
-    public int askint(String question) {
-        System.out.println(question);
-        return 0;
-    }
-}

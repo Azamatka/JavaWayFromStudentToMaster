@@ -73,7 +73,7 @@ public class StartUI {
 
         }
         if (askActionInt == 3) {
-            String askNameFind = input.ask("Enter name: ");
+            String askNameFind = input.ask("Enter name to find application: ");
             Item item = tracker.findByName(askNameFind);
             System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
             this.menu();

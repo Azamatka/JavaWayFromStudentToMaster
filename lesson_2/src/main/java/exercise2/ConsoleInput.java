@@ -1,5 +1,10 @@
 package exercise2;
  import java.util.*;
+/**
+ * ConsoleInput класс наследующий интерфейс адаптированный под ввод с консоли
+ * @since 20.12.2016
+ * @version 1
+ */
 public class ConsoleInput  implements Input {
 
 
@@ -9,16 +14,5 @@ public class ConsoleInput  implements Input {
         return scanner.nextLine();
     }
 
-    public long asklong(String questions) {
-        Scanner scann = new Scanner(System.in);
-        System.out.println(questions);
-        return scann.nextLong();
-
-    }
-    public int askint(String quest) {
-        Scanner scann = new Scanner(System.in);
-        System.out.println(quest);
-        return scann.nextInt();
-    }
 
 }
