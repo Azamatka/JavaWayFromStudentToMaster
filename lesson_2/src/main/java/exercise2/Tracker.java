@@ -10,8 +10,6 @@ import exercise2.models.Item;
 public class Tracker extends Item {
     public Item[] items = new Item[100];
     private static final Random rn = new Random();
-    int number = 0;
-
 
     /**
      * Метод addApp для добавления новой заявки в трекер
@@ -21,7 +19,6 @@ public class Tracker extends Item {
         for (int i = 0; i <= items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
-                number++;
                 break;
             }
         }
@@ -89,8 +86,8 @@ public class Tracker extends Item {
      * Метод getAll  для выведения всех заявок
      */
     public Item[] getAll() {
-        Item[] result = new Item[number];
-        for (int i = 0; i <=number; i++) {
+        Item[] result = new Item[items.length];
+        for (int i = 0; i <=items.length-1; i++) {
             if (items[i] != null) {
                 result[i] = items[i];
             }
@@ -104,7 +101,7 @@ public class Tracker extends Item {
      * @param id заявки
      */
     public Item delApp(long id) {
-        for (int i = 0; i <number; i++) {
+        for (int i = 0; i <items.length; i++) {
            if (items[i].getId()==id) {
                  items[i] = null;
                 break;
