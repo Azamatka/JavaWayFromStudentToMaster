@@ -11,17 +11,17 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
- * StartUITest класс для тестирования SubInput
- * @since 19.12.2016
+ * StartUITest класс для тестирования класса StartUI
+ * @since 26.12.2016
  * @version 1
  */
   public class StartUITest  {
     public static void main(String[] args) {
         Input input= new SubInput(new String[]{
-            "1", "George", "Smith","yes","1", "Matt", "Johns","yes","2","1","5","3","eorge","4","1",
-                "Azamat","Iltinbaev","5","6","2","5","7","1","Hello","8","1","9"});
-        StartUI start = new StartUI(input);
-        start.menu();
+            "0", "George", "Smith","yes","0", "Matt", "Johns","yes","2","1","1","3","eorge","4","1",
+                "Azamat","Iltinbaev","1","5","2","1","6","1","Hello","7","1","8"});
+        new StartUI(input).init();
+
 
 
     }
