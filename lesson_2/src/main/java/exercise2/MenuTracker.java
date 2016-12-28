@@ -114,8 +114,13 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String askId = input.ask("Enter id:");
             long askIdLong = Long.parseLong(askId);
-            Item item = tracker.findById(askIdLong);
-            System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
+            try {
+                Item item = tracker.findById(askIdLong);
+                System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
+            } catch (NullPointerException npe) {
+                System.out.println("Enter valid id");
+            }
+
 
         }
 
@@ -134,12 +139,12 @@ public class MenuTracker {
 
 
         public void execute(Input input, Tracker tracker) {
-            String askNameFind = input.ask("Enter name to find application: ");
-            Item item = tracker.findByName(askNameFind);
+           try{ String askNameFind = input.ask("Enter name to find application: ");
+                Item item = tracker.findByName(askNameFind);
+                if (item.getName().equals(null)) {
+                    throw new NullPointerException();}
             System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
-
-        }
-
+        }catch(NullPointerException npe){System.out.println("Enter the correct name");}}
         public String info() {
             return String.format("%s.%s", this.key(), "Find by name");
         }
@@ -183,8 +188,11 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String delApp = input.ask("Enter application's id, which you want to delete:");
             long delAppLong = Long.parseLong(delApp);
-            tracker.delApp(delAppLong);
-
+           try {
+               tracker.delApp(delAppLong);
+           }catch(NullPointerException npe){
+               System.out.println("Enter correct id");
+           }
         }
 
         public String info() {
@@ -199,10 +207,17 @@ public class MenuTracker {
          * Метод аddComm  вспомогательный метод для добавления комментариев к заявке
          */
         public Item addComm(long id, Comment comment) {
-            Item item = tracker.findById(id);
-            item.addComm(comment);
-            return item;
+            try {
+                Item item = tracker.findById(id);
+                item.addComm(comment);
+                return item;
+            } catch (NullPointerException npe) {
+                System.out.println("Enter correct id");
+            }
+            return null;
         }
+
+
 
         public int key() {
             return 6;
@@ -233,12 +248,13 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String askComment = input.ask("Enter application's id which comments you want to see:");
             long askCommentLong = Long.parseLong(askComment);
-            for (Comment comments : tracker.findById(askCommentLong).getAllComm()) {
+            try{ for (Comment comments : tracker.findById(askCommentLong).getAllComm()) {
                 if (comments != null) {
-                    System.out.println(comments.getComment());
+                    System.out.println(comments.getComment());}}}
+                    catch(NullPointerException npe){
+                        System.out.println("Enter correct id");
                 }
             }
-        }
 
         public String info() {
             return String.format("%s.%s", this.key(), "Show comments");

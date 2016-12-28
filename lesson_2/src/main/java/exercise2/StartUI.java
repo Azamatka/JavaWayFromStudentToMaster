@@ -24,8 +24,13 @@ public void init(){
     menu.fillActions();
     do {
         menu.show();
-        int key = Integer.valueOf(input.ask("Select: "));
-        menu.select(key);
+        try{int key = Integer.valueOf(input.ask("Select: "));
+        menu.select(key);}catch(NumberFormatException nfe){
+            System.out.println("Enter a numeric value ");
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe){
+            System.out.println("Enter value from 0 to 8 ");
+        }
      }while(1==1);
 
 
