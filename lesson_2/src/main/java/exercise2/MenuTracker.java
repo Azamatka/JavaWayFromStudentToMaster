@@ -25,15 +25,15 @@ public class MenuTracker {
      * Метод fillActions для исполнения выбранного действия
      */
     public void fillActions() {
-        this.actions[0] = new AddItem();
-        this.actions[1] = new GetAll();
-         this.actions[2] = new FindId();
-        this.actions[3] = new FindName();
-        this.actions[4] = new EditApp();
-        this.actions[5] = new DelApp();
-        this.actions[6] = new AddComm();
-        this.actions[7] = new GetComm();
-        this.actions[8] = new Exit();
+        this.actions[0] = new AddItem("Add new application");
+        this.actions[1] = new GetAll("Get all applications");
+         this.actions[2] = new FindId("Find by id");
+        this.actions[3] = new FindName("Find by name");
+        this.actions[4] = new EditApp("Edit application");
+        this.actions[5] = new DelApp("Delete application");
+        this.actions[6] = new AddComm("Add comment");
+        this.actions[7] = new GetComm("Get all comments");
+        this.actions[8] = new Exit("Exit");
     }
 
     public void select(int key) {
@@ -51,37 +51,37 @@ public class MenuTracker {
     /**
      * Класс AddItem для добавления новой заявки
      */
-    private class AddItem implements UserAction {
-        public int key() {
-            return 0;
+    private  class AddItem extends BaseAction {
+        public AddItem(String name){
+            super(name);
         }
-
-
-        public void execute(Input input, Tracker tracker) {
-            String askName = input.ask("Enter name:");
-            String askDesc = input.ask("Enter description:");
-            String askId = input.ask("Do you want to enter your own id?:");
-            number++;
-            long asklong = 0;
-            if (askId.equals("yes")) {
-                asklong = number;
-            } else {
-                asklong = tracker.generateId();
+                public int key() {
+                return 0;
             }
-            long dateTime = tracker.dateTimer();
-            tracker.addApp(new Item(askName, askDesc, dateTime, asklong, tracker.com));
 
-        }
+            public void execute(Input input, Tracker tracker) {
+                String askName = input.ask("Enter name:");
+                String askDesc = input.ask("Enter description:");
+                String askId = input.ask("Do you want to enter your own id?:");
+                number++;
+                long asklong = 0;
+                if (askId.equals("yes")) {
+                    asklong = number;
+                } else {
+                    asklong = tracker.generateId();
+                }
+                long dateTime = tracker.dateTimer();
+                tracker.addApp(new Item(askName, askDesc, dateTime, asklong, tracker.com));
 
-        public String info() {
-            return String.format("%s.%s", this.key(), "Add the new item");
+            }
         }
-    }
     /**
      * Класс GetAll для получения списка всех заявок
      */
-    private   class GetAll implements UserAction {
-
+       class GetAll  extends BaseAction {
+        public GetAll(String name){
+            super(name);
+        }
         public int key() {
             return 1;
         }
@@ -95,26 +95,23 @@ public class MenuTracker {
                 }
             }
         }
-
-
-        public String info() {
-            return String.format("%s.%s", this.key(), "Get All");
         }
-    }
+
     /**
      * Класс FindId для нахождения заявки по id
      */
-    private  class FindId implements UserAction {
-
+      class FindId extends BaseAction {
+        public FindId(String name){
+            super(name);
+        }
         public int key() {
             return 2;
         }
 
 
         public void execute(Input input, Tracker tracker) {
-            String askId = input.ask("Enter id:");
+            try { String askId = input.ask("Enter id:");
             long askIdLong = Long.parseLong(askId);
-            try {
                 Item item = tracker.findById(askIdLong);
                 System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
             } catch (NullPointerException npe) {
@@ -123,16 +120,15 @@ public class MenuTracker {
 
 
         }
-
-        public String info() {
-            return String.format("%s.%s", this.key(), "Find by id");
         }
-    }
+
     /**
      * Класс FindName для нахождения заявки по имени
      */
-    private   class FindName implements UserAction {
-
+      class FindName extends BaseAction {
+        public FindName(String name){
+            super(name);
+        }
         public int key() {
             return 3;
         }
@@ -145,15 +141,16 @@ public class MenuTracker {
                     throw new NullPointerException();}
             System.out.println(item.getName() + " " + item.getDesc() + " " + new Date(item.getDate()) + " " + item.getId());
         }catch(NullPointerException npe){System.out.println("Enter the correct name");}}
-        public String info() {
-            return String.format("%s.%s", this.key(), "Find by name");
+
         }
-    }
+
     /**
      * Класс EditApp для редактирования заявки
      */
-    private   class EditApp implements UserAction {
-
+      class EditApp extends BaseAction{
+        public EditApp (String name){
+            super(name);
+        }
         public int key() {
             return 4;
         }
@@ -171,38 +168,37 @@ public class MenuTracker {
 
         }
 
-        public String info() {
-            return String.format("%s.%s", this.key(), "Edit application");
+
         }
-    }
+
     /**
      * Класс DelApp для удаления заявки
      */
-    private   class DelApp implements UserAction {
-
+       class DelApp extends BaseAction {
+        public DelApp(String name){
+            super(name);
+        }
         public int key() {
             return 5;
         }
 
 
         public void execute(Input input, Tracker tracker) {
-            String delApp = input.ask("Enter application's id, which you want to delete:");
+            try { String delApp = input.ask("Enter application's id, which you want to delete:");
             long delAppLong = Long.parseLong(delApp);
-           try {
                tracker.delApp(delAppLong);
            }catch(NullPointerException npe){
                System.out.println("Enter correct id");
            }
         }
 
-        public String info() {
-            return String.format("%s.%s", this.key(), "Delete application");
+
         }
-    }
+
     /**
      * Класс AddComm  для добавления комментариев к заявке
      */
-    private   class AddComm implements UserAction {
+        class AddComm extends BaseAction {
         /**
          * Метод аddComm  вспомогательный метод для добавления комментариев к заявке
          */
@@ -217,7 +213,9 @@ public class MenuTracker {
             return null;
         }
 
-
+        public AddComm(String name){
+            super(name);
+        }
 
         public int key() {
             return 6;
@@ -231,15 +229,15 @@ public class MenuTracker {
 
         }
 
-        public String info() {
-            return String.format("%s.%s", this.key(), "Add comment to application");
         }
-    }
+
     /**
      * Класс GetComm для получения комментариев к заявке
      */
-    private   class GetComm implements UserAction {
-
+    class GetComm extends BaseAction  {
+        public GetComm(String name){
+            super(name);
+        }
         public int key() {
             return 7;
         }
@@ -256,15 +254,16 @@ public class MenuTracker {
                 }
             }
 
-        public String info() {
-            return String.format("%s.%s", this.key(), "Show comments");
+
         }
-    }
+
     /**
      * Класс Exit для выхода из программы
      */
-    private   class Exit implements UserAction {
-
+      class Exit extends BaseAction {
+        public  Exit(String name){
+            super(name);
+        }
         public int key() {
             return 8;
         }
@@ -274,9 +273,7 @@ public class MenuTracker {
             System.exit(0);
         }
 
-        public String info() {
-            return String.format("%s.%s", this.key(), "Exit");
         }
-    }
 }
+
 
