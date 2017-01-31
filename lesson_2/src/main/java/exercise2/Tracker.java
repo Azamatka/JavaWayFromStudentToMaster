@@ -86,15 +86,15 @@ public class Tracker extends Item {
      * Метод getAll  для выведения всех заявок
      */
     public Item[] getAll() {
-        Item[] result = new Item[items.length];
-        for (int i = 0; i <=items.length-1; i++) {
+        for (int i = 0; i <= items.length - 1; i++) {
             if (items[i] != null) {
-                result[i] = items[i];
+                return items;
             }
         }
-        return result;
-
+        return items;
     }
+
+
 
     /**
      * Метод delApp  для удаления  заявки
