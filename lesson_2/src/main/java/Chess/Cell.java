@@ -6,26 +6,32 @@ import java.util.Arrays;
  * Created by Mur on 16.01.2017.
  */
 public class Cell {
-String figureInfo;
-    double diagonal;
-    double number;
-    public Cell(String figureInfo,int diagonal,int number) {
-       this.figureInfo=figureInfo;
+    int  diagonal;
+     int vertical;
+   public String figure;
+    public   Cell(String figure,int diagonal,int vertical) {
         this.diagonal=diagonal;
-        this.number=number;
+        this.vertical=vertical;
+        this.figure=figure;
+
     }
     public Cell(){}
-    public String getFigure(){
-        return this.figureInfo;
-    }
-    public double getDiagonal(){
+    public int getDiagonal(){
         return this.diagonal;
     }
-    public double getNumber(){
-        return this.number;
+    public int getVertical(){
+        return this.vertical;
     }
-    public void setNumber(int number){
-        this.number=number;
+    public String getFigure(){
+        return this.figure;
     }
-
+    public void setVertical(int number){
+        this.vertical=vertical;
+    }
+    public void setDiagonal(int number){
+        this.diagonal=diagonal;
+    }
+    public void setFigure(String figure){
+         this.figure=figure;
+    }
 }
