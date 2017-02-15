@@ -3,11 +3,13 @@ package Chess;
 
 public abstract class Figure {
 public  Cell position;
+    public String colour;
 
-    public   Figure(Cell position) {
+    public   Figure(String colour,Cell position) {
         this.position = position;
+        this.colour=colour;
     }
 
-    abstract Cell[][] way(Cell dist)throws ImposibleMoveException,FigureNotFoundException,OccupiedWayException;
+    abstract Cell[][] move(Cell dist)throws ImposibleMoveException;
 
 }

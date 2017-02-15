@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Cell {
     int  diagonal;
      int vertical;
-   public String figure;
+    String figure;
     public   Cell(String figure,int diagonal,int vertical) {
         this.diagonal=diagonal;
         this.vertical=vertical;
