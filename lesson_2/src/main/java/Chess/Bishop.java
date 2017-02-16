@@ -3,7 +3,9 @@ package Chess;
 import static Chess.Board.board;
 
 /**
- * Created by Mur on 13.02.2017.
+ * Bishop class describes Bishops moves
+ * @since 16.02.2017
+ * @version 1
  */
 public class Bishop extends Figure {
 
@@ -14,7 +16,10 @@ public class Bishop extends Figure {
 
     }
 
-
+    /**
+     * Method move describes Bishops moves
+     * @param dist- distriction to move
+     */
     public Cell[][] move(Cell dist) {
         if (position.getDiagonal() > dist.getDiagonal() && position.getVertical() > dist.getVertical()) {
             for (int i = 0; i < 8; i++) {

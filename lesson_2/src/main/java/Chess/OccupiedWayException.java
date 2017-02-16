@@ -1,7 +1,10 @@
 package Chess;
 
+
 /**
- * Created by Mur on 07.02.2017.
+ * OccupiedWayException class create new Exception when way to move is occupied by another figure
+ * @since 16.02.2017
+ * @version 1
  */
 public class OccupiedWayException extends RuntimeException {
     public OccupiedWayException(String msg){

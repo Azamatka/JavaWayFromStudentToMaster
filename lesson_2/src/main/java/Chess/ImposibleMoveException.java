@@ -1,7 +1,9 @@
 package Chess;
 
 /**
- * Created by Mur on 16.01.2017.
+ * ImposibleMoveException class create new Exception when move is Impossible
+ * @since 16.02.2017
+ * @version 1
  */
 public class ImposibleMoveException extends RuntimeException {
     public ImposibleMoveException(String msg){

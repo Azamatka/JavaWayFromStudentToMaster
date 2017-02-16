@@ -3,13 +3,18 @@ package Chess;
 import java.util.Arrays;
 
 /**
- * Created by Mur on 17.01.2017.
+ * Board class describes chess board
+ * @since 16.02.2017
+ * @version 1
  */
 public class Board {
     static Cell[][] board = new Cell[8][8];
     public Figure figure;
     public Cell dist;
 
+    /**
+     * Method board fills array by coordinates
+     */
     public void board() {
         for (int f = 0; f < 8; f++) {
             for (int c = 0; c < 8; c++) {
@@ -18,12 +23,19 @@ public class Board {
         }
     }
 
+    /**
+     * Method makeMove  moves choosed figure
+     */
     public Cell[][] makeMove(Figure figure, Cell dist) {
         this.figure = figure;
         this.dist = dist;
         return figure.move(dist);
     }
+    /**
+     * Method   checkMove checks figures move, if move is impossible throws exceptions
+     */
     public void checkMove() {
+         if(!figure.position.getFigure().equals("Bishop")) throw new FigureNotFoundException("Figure not found");
         if (figure.position.getDiagonal() < 8 && dist.getVertical() < 8 && figure.position.getVertical() < 8 && dist.getVertical() < 8) {
             if (figure.position.getDiagonal() != dist.getDiagonal() && figure.position.getVertical() != dist.getVertical()) {
                 for (Cell[] cell : board) {
